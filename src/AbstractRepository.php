@@ -537,8 +537,8 @@ abstract class AbstractRepository
     protected function logDbError(mixed $result, string $message): void
     {
         if (false === $result) {
-            Debugger::writeLog(\sprintf('%s: Raised exception with message=%s', 'Yoostart / Database', $message));
-            Debugger::writeLog(\sprintf('%s: SQL last error=%s', 'Yoostsrt / Database', $this->wpdb->last_error));
+            $this->writeLog(\sprintf('%s: Raised exception with message=%s', 'Yoostart / Database', $message));
+            $this->writeLog(\sprintf('%s: SQL last error=%s', 'Yoostsrt / Database', $this->wpdb->last_error));
             throw new \RuntimeException($message);
         }
     }
@@ -808,8 +808,19 @@ abstract class AbstractRepository
     {
         if ((empty($valueOne) && !empty($valueTwo)) || (!empty($valueOne) && empty($valueTwo))) {
             throw new \InvalidArgumentException(
-                sprintf('The keys %s and %s must be defined together',  $args[0], $args[1])
+                sprintf('The keys %s and %s must be defined together', $args[0], $args[1])
             );
+        }
+    }
+
+    private function writeLog(mixed $log): void
+    {
+        if (true === WP_DEBUG) {
+            if (\is_array($log) || \is_object($log)) {
+                error_log(print_r($log, true));
+            } else {
+                error_log($log);
+            }
         }
     }
 }

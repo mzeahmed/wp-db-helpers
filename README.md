@@ -5,7 +5,6 @@
 ## Features
 
 - **Abstract Repository:** Base class for implementing the repository pattern with `$wpdb`.
-- **Interface for Repositories:** Define consistent methods for CRUD operations.
 - **Pagination Support:** Easily paginate database results.
 - **Bulk Operations:** Perform bulk inserts, updates, and deletes.
 - **Transaction Management:** Start, commit, and rollback database transactions.
@@ -14,7 +13,7 @@
 
 ## Installation
 
-This package can be included in your plugin/thme using Composer. If the package is hosted on a GitHub repository, add it as a VCS repository in your project:
+This package can be included in plugin/theme or in bedrock/wordplate installation using Composer. 
 
 ```bash
 composer require mzeahmed/wp-db-helpers
@@ -108,9 +107,9 @@ try {
 ## Requirements
 
 - PHP 8.3 or higher
-- WordPress 5.8 or higher
+- WordPress 6.0 or higher
 - Composer for dependency management
 
 ## License
 
-This package is licensed under the MIT License. See the `LICENSE` file for more information.
+This package is licensed under the MIT License.

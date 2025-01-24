@@ -537,8 +537,8 @@ abstract class AbstractRepository
     protected function logDbError(mixed $result, string $message): void
     {
         if (false === $result) {
-            $this->writeLog(\sprintf('%s: Raised exception with message=%s', 'Yoostart / Database', $message));
-            $this->writeLog(\sprintf('%s: SQL last error=%s', 'Yoostsrt / Database', $this->wpdb->last_error));
+            $this->writeLog(\sprintf('%s: Raised exception with message=%s', 'Wp DB / Database', $message));
+            $this->writeLog(\sprintf('%s: SQL last error=%s', 'Wp DB / Database', $this->wpdb->last_error));
             throw new \RuntimeException($message);
         }
     }
